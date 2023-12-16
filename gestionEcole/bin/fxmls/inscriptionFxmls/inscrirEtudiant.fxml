@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.inscriptionControllers.InscrirEtudiant">
+   <children>
+      <AnchorPane layoutX="103.0" layoutY="7.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #00264C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="609.0" layoutY="-16.0" prefHeight="46.0" prefWidth="192.0" spacing="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="hide" fitHeight="16.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../icons/minus-xxl.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fullScreen" fitHeight="36.0" fitWidth="39.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../icons/full-screen-icon-28.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="exit" fitHeight="27.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/exit-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="46.0" prefHeight="200.0" prefWidth="46.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="754.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <VBox alignment="BASELINE_CENTER" layoutX="-18.0" layoutY="27.0" prefHeight="221.0" prefWidth="46.0" spacing="20.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="homeImage" fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/home-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="46.0" layoutY="64.0" prefHeight="454.0" prefWidth="127.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <VBox layoutX="26.0" layoutY="14.0" prefHeight="454.0" prefWidth="127.0" spacing="18.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Home">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#retourner" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Retourner">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="190.0" layoutY="94.0" prefHeight="392.0" prefWidth="600.0">
+         <children>
+            <BorderPane prefHeight="395.0" prefWidth="600.0">
+               <top>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="612.0" text="Remplir les informations" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </top>
+               <center>
+                  <GridPane BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="133.33331298828125" minHeight="10.0" prefHeight="121.33330535888672" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="156.66669464111328" minHeight="10.0" prefHeight="154.66669464111328" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="cneBox" prefHeight="25.0" prefWidth="180.0" promptText="CNE" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <DatePicker fx:id="dateInscription" prefHeight="25.0" prefWidth="183.0" promptText="Date d'inscription" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <ComboBox fx:id="semestre" onAction="#changeSemestre" prefHeight="25.0" prefWidth="179.0" promptText="Semestre" />
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="151.0" prefWidth="273.0" GridPane.rowIndex="1">
+                           <children>
+                              <TableView fx:id="courList" prefHeight="151.0" prefWidth="289.0">
+                                <columns>
+                                  <TableColumn fx:id="codeCourCol" prefWidth="150.66664123535156" resizable="false" text="Code Cour" />
+                                  <TableColumn fx:id="nomCourCol" prefWidth="145.3333740234375" resizable="false" text="Nom Cour" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="28.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#inscrir" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #00264C;" text="Confirmer" textFill="WHITE" />
+                        <Button mnemonicParsing="false" onAction="#annuler" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #00264C;" text="Annuler" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

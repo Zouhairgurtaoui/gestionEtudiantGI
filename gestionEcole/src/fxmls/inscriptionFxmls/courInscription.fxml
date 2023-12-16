@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.inscriptionControllers.CourInscription">
+   <children>
+      <AnchorPane layoutX="103.0" layoutY="7.0" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #00264C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="609.0" layoutY="-16.0" prefHeight="46.0" prefWidth="192.0" spacing="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="hide" fitHeight="16.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../icons/minus-xxl.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fullScreen" fitHeight="36.0" fitWidth="39.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../icons/full-screen-icon-28.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="exit" fitHeight="27.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/exit-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="46.0" prefHeight="200.0" prefWidth="46.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="754.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <VBox alignment="BASELINE_CENTER" layoutX="-18.0" layoutY="27.0" prefHeight="221.0" prefWidth="46.0" spacing="20.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="homeImage" fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/home-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="46.0" layoutY="64.0" prefHeight="454.0" prefWidth="127.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <VBox layoutX="26.0" layoutY="14.0" prefHeight="454.0" prefWidth="127.0" spacing="18.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Home">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#retourner" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Retourner">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <HBox layoutX="222.0" layoutY="81.0" prefHeight="398.0" prefWidth="566.0">
+         <children>
+            <TableView fx:id="courTable" prefHeight="398.0" prefWidth="567.0">
+              <columns>
+                <TableColumn fx:id="codeCourCol" prefWidth="90.66667175292969" text="Code Cour" />
+                  <TableColumn fx:id="nomCourCol" prefWidth="105.33331298828125" text="Nom Cour" />
+                  <TableColumn fx:id="ensaignatCol" prefWidth="107.33340454101562" text="Ensaignant" />
+                  <TableColumn fx:id="horaireCol" prefWidth="98.0" text="Horaire" />
+                  <TableColumn fx:id="salleCol" prefWidth="82.0" text="Salle" />
+                  <TableColumn fx:id="semestreCol" prefWidth="88.0" text="Semestre" />
+              </columns>
+            </TableView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

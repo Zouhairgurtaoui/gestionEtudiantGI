@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.ControllerAjouterEtudiant">
+   <children>
+      
+      <AnchorPane fx:id="menuPane" prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #00264C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="238.0" layoutY="164.0" prefHeight="200.0" prefWidth="44.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0" />
+      <AnchorPane layoutY="104.0" prefHeight="454.0" prefWidth="204.0" style="-fx-border-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <VBox layoutX="30.0" layoutY="108.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#annuler" prefHeight="56.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="  Home">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Downloads/house-solid.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="Ajouter">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Downloads/plus-solid.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="38.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#annuler" prefHeight="52.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="  Supprimer">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Downloads/user-minus-solid.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#modifierInfoEtudiant" prefHeight="62.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="  Modifier">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Downloads/pen-to-square-solid.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="222.0" layoutY="81.0" prefHeight="398.0" prefWidth="566.0" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0.3;">
+         <children>
+            <VBox layoutX="91.0" layoutY="64.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="566.0">
+                     <children>
+                        <Label text="Entrer les informations de l'etudiant">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <TextField fx:id="cne" prefHeight="26.0" prefWidth="170.0" promptText="Cne" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <TextField fx:id="nom" prefHeight="26.0" prefWidth="170.0" promptText="Nom" />
+                        <TextField fx:id="prenom" prefHeight="26.0" prefWidth="170.0" promptText="Prenom" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <DatePicker fx:id="naissance" prefHeight="26.0" prefWidth="170.0" promptText="Date de naissance" />
+                        <TextField fx:id="adresse" prefHeight="26.0" prefWidth="170.0" promptText="Adresse" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <TextField fx:id="tele" prefHeight="26.0" prefWidth="170.0" promptText="Numero de telephone" />
+                        <ComboBox fx:id="semestre" prefHeight="26.0" prefWidth="170.0" promptText="Semestre" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="attention" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="56.0" prefWidth="406.0" textFill="DARKGRAY">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#ajouterEtudiant" prefHeight="26.0" prefWidth="61.0" text="Ajouter" />
+                        <Button mnemonicParsing="false" onAction="#annuler" prefHeight="26.0" prefWidth="61.0" text="Annuler" />
+                     </children>
+                     <padding>
+                        <Insets right="20.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
