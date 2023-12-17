@@ -156,13 +156,18 @@ public class ControllerModifierEtudiant implements Initializable {
     }
 
     @FXML
-    void retourner(ActionEvent event){
+    void home(ActionEvent event){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxmls/gererScene.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = null;
         try {
-            annuler(event);
+            scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
-            
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+        scene.getStylesheets().add("controllers/tableview.css");
+        stage.setScene(scene);
+        stage.show();
     }
 
 

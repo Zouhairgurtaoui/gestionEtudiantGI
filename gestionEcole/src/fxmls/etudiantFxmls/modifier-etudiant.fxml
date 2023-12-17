@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.ControllerModifierEtudiant">
+<AnchorPane prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.ControllerModifierEtudiant">
     <children>
         <AnchorPane layoutX="238.0" layoutY="164.0" prefHeight="200.0" prefWidth="44.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0" />
         <AnchorPane layoutY="104.0" prefHeight="454.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox layoutX="30.0" layoutY="108.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#annuler" prefHeight="56.0" prefWidth="207.0" style="-fx-background-color: #fff;" text="Home">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="56.0" prefWidth="207.0" style="-fx-background-color: #fff;" text="  Home">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -27,21 +27,21 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/home-removebg-preview.png" />
+                              <Image url="@../../icons/house.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#retourner" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Retourner">
+                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#annuler" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="  Retourner">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/edit-removebg-preview.png" />
+                              <Image url="@../../icons/arrow-loop-left-.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -69,8 +69,8 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="30.0">
                             <children>
                                 <TextField fx:id="cne" prefHeight="26.0" prefWidth="170.0" promptText="Cne" />
-                        <Button fx:id="valide" mnemonicParsing="false" onAction="#valider" prefHeight="26.0" prefWidth="53.0" text="Valider" />
-                        <Button fx:id="change" mnemonicParsing="false" onAction="#changeCneButton" prefHeight="26.0" prefWidth="88.0" text="Changer CNE" />
+                        <Button fx:id="valide" mnemonicParsing="false" onAction="#valider" prefHeight="31.0" prefWidth="76.0" text="Valider" />
+                        <Button fx:id="change" mnemonicParsing="false" onAction="#changeCneButton" prefHeight="31.0" prefWidth="115.0" text="Changer CNE" />
                             </children>
                             <padding>
                                 <Insets left="10.0" />
@@ -124,11 +124,11 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                                <Button fx:id="modifier" mnemonicParsing="false" onAction="#modifierInfoEtudiant" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #00264C;" text="Modifier" textFill="WHITE">
+                                <Button fx:id="modifier" mnemonicParsing="false" onAction="#modifierInfoEtudiant" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #00264C;" text="Modifier" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font></Button>
-                                <Button mnemonicParsing="false" onAction="#annuler" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #00264C;" text="Annuler" textFill="WHITE">
+                                <Button mnemonicParsing="false" onAction="#annuler" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #00264C;" text="Annuler" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font></Button>

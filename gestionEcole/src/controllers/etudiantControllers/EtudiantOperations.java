@@ -93,7 +93,7 @@ public class EtudiantOperations implements Initializable {
 
 
     public void initializeFromDB() throws SQLException {
-        
+        list.clear();
         connection = DbConnection.getConnectDB();
         String query = "select * from etudiant";
         Statement statement = connection.createStatement();
@@ -102,7 +102,7 @@ public class EtudiantOperations implements Initializable {
             list.add(new Etudiant(resultSet.getString("cne"),resultSet.getString("nomEtudiant"),resultSet.getString("prenomEtudiant"),resultSet.getString("dateNaissance"),resultSet.getString("addresse"),resultSet.getString("numTele")));
         }
         connection.close();
-       
+
 
     }
 
@@ -145,10 +145,10 @@ public class EtudiantOperations implements Initializable {
                             return true;
                         }else return false;
                     }
-                    
+
                 });
             }
-            
+
         });
         SortedList<Etudiant> sortedList = new SortedList<Etudiant>(filteredList);
         sortedList.comparatorProperty().bind(tableEtudiant.comparatorProperty());

@@ -51,17 +51,6 @@ public class GererController {
                     root = loader.load();
                     scene = new Scene(root);
                     scene.getStylesheets().add("controllers/tableview.css");
-                    root.setOnMousePressed(e ->{
-                        x = e.getSceneX();
-                        y = e.getSceneY();
-                    });
-                    root.setOnMouseDragged(e ->{
-                        stage.setX(e.getScreenX() - x);
-                        stage.setY(e.getScreenY() - y);
-                    });
-                  
-                   
-                    //scene.getStylesheets().add(getClass().getResource("/controllers/tableview.css").toExternalForm());
                     stage.setTitle("Fillier Management");
                     stage.setScene(scene);
                     stage.show();
@@ -79,20 +68,7 @@ public class GererController {
                     stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                     loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/fxmls/etudiantFxmls/espace-etudiant.fxml"));
-
                     root = loader.load();
-                   
-                    
-                    root.setOnMousePressed(e ->{
-                        x = e.getSceneX();
-                        y = e.getSceneY();
-                    });
-                    root.setOnMouseDragged(e ->{
-                        stage.setX(e.getScreenX() - x);
-                        stage.setY(e.getScreenY() - y);
-                    });
-                   
-                   
                     scene = new Scene(root);
                     scene.getStylesheets().add("controllers/tableview.css");
                     //scene.getStylesheets().add(getClass().getResource("/controllers/tableview.css").toExternalForm());
@@ -121,17 +97,7 @@ public class GererController {
                     root = loader.load();
                     scene = new Scene(root);
                     scene.getStylesheets().add("controllers/tableview.css");
-                    root.setOnMousePressed(e ->{
-                        x = e.getSceneX();
-                        y = e.getSceneY();
-                    });
-                    root.setOnMouseDragged(e ->{
-                        stage.setX(e.getScreenX() - x);
-                        stage.setY(e.getScreenY() - y);
-                    });
                     root.autosize();
-                  
-                   
                     //scene.getStylesheets().add(getClass().getResource("/controllers/tableview.css").toExternalForm());
                     stage.setTitle("Fillier Management");
                     stage.setScene(scene);

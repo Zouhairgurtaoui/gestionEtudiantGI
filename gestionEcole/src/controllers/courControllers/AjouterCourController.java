@@ -20,7 +20,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.*;
 
@@ -64,11 +63,6 @@ public class AjouterCourController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         semestre.getItems().addAll("S1","S2","S3","S4");
 
-         homeImage.setOnMouseClicked(e ->{
-            ActionEvent event = new ActionEvent(homeImage, MouseEvent.NULL_SOURCE_TARGET);
-            home(event);
-        });
-        
     }
 
 

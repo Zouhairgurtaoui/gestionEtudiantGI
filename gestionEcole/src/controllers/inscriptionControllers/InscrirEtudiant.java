@@ -29,9 +29,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class InscrirEtudiant implements Initializable{
@@ -77,13 +75,6 @@ public class InscrirEtudiant implements Initializable{
         codeCourCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("codeCour"));
         nomCourCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("nomCour"));
         courList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        homeImage.setOnMouseClicked(e ->{
-            ActionEvent event = new ActionEvent(homeImage, MouseEvent.NULL_SOURCE_TARGET);
-            home(event);
-        });
-        
-        
 
     }
 

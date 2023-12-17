@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.EtudiantOperations">
+<AnchorPane prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.EtudiantOperations">
    <children>
       <AnchorPane layoutX="238.0" layoutY="164.0" prefHeight="200.0" prefWidth="44.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0" />
       <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="170.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutX="30.0" layoutY="108.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-color: 0.3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="Home">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="  Home">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -28,21 +28,21 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <ImageView fx:id="home" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="home" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/home-removebg-preview.png" />
+                              <Image url="@../../icons/house.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="163.0">
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="163.0" spacing="10.0">
                      <children>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/minimal-48-512.png" />
+                              <Image url="@../../icons/magnifying-glass.jpg" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="searchField" prefHeight="25.0" prefWidth="131.0" promptText="Search" />
+                        <TextField fx:id="searchField" prefHeight="31.0" prefWidth="104.0" promptText="Search" />
                      </children>
                   </HBox>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ajouter" prefHeight="32.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="  Ajouter">
@@ -50,9 +50,9 @@
                         <Font size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="ajouter" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ajouter" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/add-icon-transparent-23-removebg-preview.png" />
+                              <Image url="@../../icons/plus.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -62,9 +62,9 @@
                         <Font size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="supprimer" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="supprimer" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/delete-removebg-preview.png" />
+                              <Image url="@../../icons/user-minus.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -74,9 +74,9 @@
                         <Font size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/edit-removebg-preview.png" />
+                              <Image url="@../../icons/pen-to-square.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -108,4 +108,7 @@
          </font>
       </Label>
    </children>
+   <padding>
+      <Insets left="10.0" top="10.0" />
+   </padding>
 </AnchorPane>

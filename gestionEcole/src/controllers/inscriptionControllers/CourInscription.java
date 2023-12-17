@@ -23,9 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class CourInscription implements Initializable {
@@ -76,12 +74,6 @@ public class CourInscription implements Initializable {
         salleCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("salle"));
         semestreCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("semestre"));
         refreshTable();
-        homeImage.setOnMouseClicked(e ->{
-            ActionEvent event = new ActionEvent(homeImage, MouseEvent.NULL_SOURCE_TARGET);
-            home(event);
-        });
-        
-       
     }
 
 
