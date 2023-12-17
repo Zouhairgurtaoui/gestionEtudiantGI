@@ -40,12 +40,7 @@ public class ControllerModifierEtudiant implements Initializable {
 
 
     @FXML
-    private ComboBox<String> semestre;
-
-    @FXML
     private TextField tele;
-
-    private String[] semestres = {"S1","S2","S3","S4"} ;
 
     @FXML
     private Button change;
@@ -59,10 +54,6 @@ public class ControllerModifierEtudiant implements Initializable {
     @FXML
     private Label attention;
 
-    public String getSemestre(){
-        String s = semestre.getValue();
-        return s.toString();
-    }
 
     public void desactiverFields(){
         nom.setDisable(true);
@@ -70,7 +61,7 @@ public class ControllerModifierEtudiant implements Initializable {
         adresse.setDisable(true);
         naissance.setDisable(true);
         tele.setDisable(true);
-        semestre.setDisable(true);
+       
         modifier.setDisable(true);
         change.setDisable(true);
         cne.setDisable(false);
@@ -82,7 +73,7 @@ public class ControllerModifierEtudiant implements Initializable {
         adresse.setDisable(false);
         naissance.setDisable(false);
         tele.setDisable(false);
-        semestre.setDisable(false);
+       
         modifier.setDisable(false);
         change.setDisable(false);
         cne.setDisable(true);
@@ -91,7 +82,7 @@ public class ControllerModifierEtudiant implements Initializable {
     }
 
     public boolean fieldAreEmpty(){
-        if (cne.getText().trim().isEmpty() || nom.getText().trim().isEmpty() || prenom.getText().trim().isEmpty() || naissance.getValue().toString().isEmpty() || adresse.getText().trim().isEmpty() || tele.getText().trim().isEmpty() || semestre.getValue().isEmpty())
+        if (cne.getText().trim().isEmpty() || nom.getText().trim().isEmpty() || prenom.getText().trim().isEmpty() || naissance.getValue().toString().isEmpty() || adresse.getText().trim().isEmpty() || tele.getText().trim().isEmpty() )
             return true ;
         else
             return false ;
@@ -99,7 +90,7 @@ public class ControllerModifierEtudiant implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        semestre.getItems().addAll(semestres);
+        
         desactiverFields();
 
     }
@@ -108,17 +99,11 @@ public class ControllerModifierEtudiant implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxmls/etudiantFxmls/espace-etudiant.fxml"));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add("controllers/tableview.css");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void ajouter(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxmls/etudiantFxmls/ajouterEtudiant.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void valider(ActionEvent event) throws SQLException {
         fxLabel.setText(null);
@@ -139,7 +124,7 @@ public class ControllerModifierEtudiant implements Initializable {
             naissance.setValue(LocalDate.parse(resultSet.getString("dateNaissance")));
             adresse.setText(resultSet.getString("addresse"));
             tele.setText(resultSet.getString("numTele"));
-            semestre.setValue(resultSet.getString("semestre"));
+            
         }
     }
 
@@ -150,7 +135,7 @@ public class ControllerModifierEtudiant implements Initializable {
     public void modifierInfoEtudiant(ActionEvent event) throws SQLException {
         if(!fieldAreEmpty()){
             try {
-                Etudiant etudiant = new Etudiant(cne.getText().trim(), nom.getText().trim(), prenom.getText().trim(), naissance.getValue().toString(), adresse.getText().trim(), tele.getText().trim(), getSemestre());
+                Etudiant etudiant = new Etudiant(cne.getText().trim(), nom.getText().trim(), prenom.getText().trim(), naissance.getValue().toString(), adresse.getText().trim(), tele.getText().trim());
                 etudiant.modifierInfoEtudiant();
                 cne.clear();
                 nom.clear();
@@ -158,7 +143,6 @@ public class ControllerModifierEtudiant implements Initializable {
                 adresse.clear();
                 tele.clear();
                 naissance.setValue(null);
-                semestre.setValue(null);
                 attention.setText(null);
             }catch (IllegalArgumentException exception){
                 attention.setText("Verifier les informations");
@@ -169,6 +153,16 @@ public class ControllerModifierEtudiant implements Initializable {
     }
     public void setTextFields(String cne){
         this.cne.setText(cne);
+    }
+
+    @FXML
+    void retourner(ActionEvent event){
+        try {
+            annuler(event);
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
     }
 
 

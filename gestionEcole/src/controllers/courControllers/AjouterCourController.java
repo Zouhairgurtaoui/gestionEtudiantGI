@@ -5,8 +5,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ResourceBundle;
 
 
@@ -19,9 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -38,8 +35,6 @@ public class AjouterCourController implements Initializable{
     @FXML
     private TextField ensaignant;
 
-    @FXML
-    private DatePicker horaire;
 
     @FXML
     private TextField nomCour;
@@ -49,15 +44,6 @@ public class AjouterCourController implements Initializable{
 
     @FXML
     private ComboBox<String> semestre;
-
-    @FXML
-    private ImageView exit;
-
-    @FXML
-    private ImageView fullScreen;
-
-    @FXML
-    private ImageView hide;
 
     @FXML
     private ImageView homeImage;
@@ -83,31 +69,6 @@ public class AjouterCourController implements Initializable{
             home(event);
         });
         
-        exit.setOnMouseClicked(e -> {
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.close();
-        });
-
-        
-        fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            
-            
-            if(!isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=true;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=false;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.setY(Stage.getWindows().size() + 100);
-        });
     }
 
 
@@ -119,17 +80,16 @@ public class AjouterCourController implements Initializable{
         if(isUpdated){
             
             try{
-            query = "UPDATE cour SET nomCour=? ,ensaignantRespo=? ,salle=? ,horaire=? ,semestre=? WHERE codeCour=?";
+            query = "UPDATE cour SET nomCour=? ,ensaignantRespo=? ,salle=? ,semestre=? WHERE codeCour=?";
             st = connection.prepareStatement(query);
-            if(nomCour.getText().isEmpty() || ensaignant.getText().isEmpty() || salle.getText().isEmpty() || horaire.getValue().toString().isEmpty() || semestre.getValue().isEmpty()){
+            if(nomCour.getText().isEmpty() || ensaignant.getText().isEmpty() || salle.getText().isEmpty() || semestre.getValue().isEmpty()){
                 System.out.println("3amrhom");
             }else{
             st.setString(1, nomCour.getText());
             st.setString(2, ensaignant.getText());
             st.setString(3, salle.getText());
-            st.setString(4, horaire.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-            st.setString(5, semestre.getSelectionModel().getSelectedItem());
-            st.setString(6, codeCour.getText());
+            st.setString(4, semestre.getSelectionModel().getSelectedItem());
+            st.setString(5, codeCour.getText());
 
             int res = st.executeUpdate();
             System.out.println("rows affected" + res);
@@ -149,20 +109,20 @@ public class AjouterCourController implements Initializable{
             }
 
         }else{
-        query = "INSERT INTO cour(codeCour,nomCour,horaire,ensaignantRespo,salle,semestre) VALUES (?,?,?,?,?,?)";
+        query = "INSERT INTO cour(codeCour,nomCour,ensaignantRespo,salle,semestre) VALUES (?,?,?,?,?)";
         
         try {
-            if(nomCour.getText().isEmpty() || ensaignant.getText().isEmpty() || salle.getText().isEmpty() || horaire.getValue().toString().isEmpty() || semestre.getValue().isEmpty()){
+            if(nomCour.getText().isEmpty() || ensaignant.getText().isEmpty() || salle.getText().isEmpty() || semestre.getValue().isEmpty()){
                 System.out.println("3amrhom");
             }else{
 
             st = connection.prepareStatement(query);
             st.setString(1, codeCour.getText());
             st.setString(2, nomCour.getText());
-            st.setString(3, horaire.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-            st.setString(4, ensaignant.getText());
-            st.setString(5, salle.getText());
-            st.setString(6, semestre.getSelectionModel().getSelectedItem());
+            
+            st.setString(3, ensaignant.getText());
+            st.setString(4, salle.getText());
+            st.setString(5, semestre.getSelectionModel().getSelectedItem());
             int res = st.executeUpdate();
             System.out.println("rows affected" + res);
 
@@ -216,12 +176,12 @@ public class AjouterCourController implements Initializable{
     public void setUpdated(boolean isUpdated) {
         this.isUpdated = isUpdated;
     }
-    public void setFieldText(String codeCour,String nomCour,String ensaignant,LocalDate date,String salle){
+    public void setFieldText(String codeCour,String nomCour,String ensaignant,String salle){
 
         this.codeCour.setText(codeCour);
         this.nomCour.setText(nomCour);
         this.ensaignant.setText(ensaignant);
-        this.horaire.setValue(date);
+       
         this.salle.setText(salle);
         
     }

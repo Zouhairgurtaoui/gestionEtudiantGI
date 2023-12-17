@@ -39,20 +39,10 @@ public class CourInscription implements Initializable {
     @FXML
     private TableColumn<Cour, String> ensaignatCol;
 
-    @FXML
-    private ImageView exit;
 
-    @FXML
-    private ImageView fullScreen;
-
-    @FXML
-    private ImageView hide;
 
     @FXML
     private ImageView homeImage;
-
-    @FXML
-    private TableColumn<Cour, String> horaireCol;
 
     @FXML
     private TableColumn<Cour, String> nomCourCol;
@@ -84,7 +74,6 @@ public class CourInscription implements Initializable {
         nomCourCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("nomCour"));
         ensaignatCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("ensaignant"));
         salleCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("salle"));
-        horaireCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("horaire"));
         semestreCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("semestre"));
         refreshTable();
         homeImage.setOnMouseClicked(e ->{
@@ -92,30 +81,7 @@ public class CourInscription implements Initializable {
             home(event);
         });
         
-        exit.setOnMouseClicked(e -> {
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.close();
-        });
-
-        
-        fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            
-            if(!isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=true;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=false;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.setY(Stage.getWindows().size() + 100);
-        });
+       
     }
 
 
@@ -131,8 +97,7 @@ public class CourInscription implements Initializable {
             resultSet = preparedStatement.executeQuery();
             
             while (resultSet.next()){
-                courList.add(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour") ,
-                resultSet.getDate("horaire"), resultSet.getString("ensaignantRespo"), resultSet.getString("salle"),resultSet.getString("semestre")));
+                courList.add(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour") , resultSet.getString("ensaignantRespo"), resultSet.getString("salle"),resultSet.getString("semestre")));
             }
 
             courTable.setItems(courList);
@@ -180,6 +145,7 @@ public class CourInscription implements Initializable {
             loader.setLocation(getClass().getResource("/fxmls/inscriptionFxmls/inscriptionOperations.fxml"));
             root = loader.load();
             scene = new Scene(root);
+            scene.getStylesheets().add("controllers/tableview.css");
             stage.setScene(scene);
             stage.show();
 

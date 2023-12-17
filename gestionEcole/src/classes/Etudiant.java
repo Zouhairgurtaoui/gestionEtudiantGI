@@ -14,7 +14,6 @@ public class Etudiant {
     private String prenom ;
     private String dateNaissance ;
     private String adresse ;
-    private String semestre ;
     private String tele ;
 
 
@@ -33,7 +32,7 @@ public class Etudiant {
         }
         return true;
     }
-    public Etudiant(String cne, String nom, String prenom, String dateNaissance, String adresse,String tele , String semestre ) {
+    public Etudiant(String cne, String nom, String prenom, String dateNaissance, String adresse,String tele  ) {
 
         if (!containCharachter(nom) || !containCharachter(prenom) || !conatainDigit(tele)){
             throw new IllegalArgumentException();
@@ -44,7 +43,6 @@ public class Etudiant {
             this.prenom = prenom;
             this.dateNaissance = dateNaissance;
             this.adresse = adresse;
-            this.semestre = semestre;
             this.tele = tele;
         }
     }
@@ -69,9 +67,6 @@ public class Etudiant {
         return adresse;
     }
 
-    public String getSemestre() {
-        return semestre;
-    }
 
     public String getTele() {
         return tele;
@@ -80,7 +75,7 @@ public class Etudiant {
     public void ajouterEtudiant() throws SQLException {
         try {
             Connection connection = DbConnection.getConnectDB();
-            String query = "insert into etudiant (cne,nomEtudiant,prenomEtudiant,dateNaissance,addresse,numTele,semestre) values (?,?,?,?,?,?,?)";
+            String query = "insert into etudiant (cne,nomEtudiant,prenomEtudiant,dateNaissance,addresse,numTele) values (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, this.cne);
             preparedStatement.setString(2, this.nom);
@@ -88,7 +83,6 @@ public class Etudiant {
             preparedStatement.setString(4, this.dateNaissance);
             preparedStatement.setString(5, this.adresse);
             preparedStatement.setString(6, this.tele);
-            preparedStatement.setString(7, this.semestre);
             preparedStatement.executeUpdate();
             connection.close();
         }
@@ -99,15 +93,15 @@ public class Etudiant {
 
     public void modifierInfoEtudiant() throws SQLException {
         Connection connection = DbConnection.getConnectDB();
-        String query = "update etudiant set nomEtudiant =? , prenomEtudiant=? , dateNaissance=? , addresse=? , numTele=? , semestre=? where cne=?";
+        String query = "update etudiant set nomEtudiant =? , prenomEtudiant=? , dateNaissance=? , addresse=? , numTele=? where cne=?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1,this.nom);
         preparedStatement.setString(2,this.prenom);
         preparedStatement.setString(3,this.dateNaissance);
         preparedStatement.setString(4,this.adresse);
         preparedStatement.setString(5,this.tele);
-        preparedStatement.setString(6,this.semestre);
-        preparedStatement.setString(7,this.cne);
+
+        preparedStatement.setString(6,this.cne);
         preparedStatement.executeUpdate();
         connection.close();
     }

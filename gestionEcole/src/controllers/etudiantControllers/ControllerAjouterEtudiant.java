@@ -15,12 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
+
 import java.sql.*;
-import java.util.ResourceBundle;
 
 
-public class ControllerAjouterEtudiant implements Initializable {
+
+public class ControllerAjouterEtudiant{
 
     @FXML
     private Label attention;
@@ -40,18 +40,10 @@ public class ControllerAjouterEtudiant implements Initializable {
     @FXML
     private TextField prenom;
 
-    @FXML
-    private ComboBox<String> semestre;
 
     @FXML
     private TextField tele;
 
-    private String[] semestres = {"S1","S2","S3","S4"} ;
-
-    public String getSemestre(){
-        String s = semestre.getValue();
-        return s.toString();
-    }
 
 
     public void annuler(ActionEvent event) throws IOException {
@@ -62,16 +54,17 @@ public class ControllerAjouterEtudiant implements Initializable {
         stage.show();
     }
 
-    public void modifierInfoEtudiant(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxmls/etudiantFxmls/modifier-etudiant.fxml"));
+    public void retourner(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxmls/etudiantFxmls/espace-etudiant.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add("controllers/tableview.css");
         stage.setScene(scene);
         stage.show();
     }
 
     public boolean fieldAreEmpty(){
-        if (cne.getText().trim().isEmpty() || nom.getText().trim().isEmpty() || prenom.getText().trim().isEmpty() || naissance.getValue().toString().isEmpty() || adresse.getText().trim().isEmpty() || tele.getText().trim().isEmpty() || semestre.getValue().isEmpty())
+        if (cne.getText().trim().isEmpty() || nom.getText().trim().isEmpty() || prenom.getText().trim().isEmpty() || naissance.getValue().toString().isEmpty() || adresse.getText().trim().isEmpty() || tele.getText().trim().isEmpty() )
             return true ;
         else
             return false ;
@@ -82,7 +75,7 @@ public class ControllerAjouterEtudiant implements Initializable {
         if (!fieldAreEmpty()){
             try {
                 try {
-                    Etudiant etudiant = new Etudiant(cne.getText().trim(), nom.getText().trim(), prenom.getText().trim(), naissance.getValue().toString(), adresse.getText().trim(), tele.getText().trim(), getSemestre());
+                    Etudiant etudiant = new Etudiant(cne.getText().trim(), nom.getText().trim(), prenom.getText().trim(), naissance.getValue().toString(), adresse.getText().trim(), tele.getText().trim());
                     etudiant.ajouterEtudiant();
                     cne.clear();
                     nom.clear();
@@ -90,7 +83,7 @@ public class ControllerAjouterEtudiant implements Initializable {
                     adresse.clear();
                     tele.clear();
                     naissance.setValue(null);
-                    semestre.setValue(null);
+                   
                 }catch (IllegalArgumentException exception){
                     attention.setText("Verifier les informations");
                 }
@@ -103,7 +96,6 @@ public class ControllerAjouterEtudiant implements Initializable {
                 adresse.clear();
                 tele.clear();
                 naissance.setValue(null);
-                semestre.setValue(null);
             }
         }
         else {
@@ -115,9 +107,5 @@ public class ControllerAjouterEtudiant implements Initializable {
 
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        semestre.getItems().addAll(semestres);
-
-    }
+   
 }

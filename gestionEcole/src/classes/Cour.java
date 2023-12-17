@@ -7,17 +7,15 @@ import javafx.beans.property.SimpleStringProperty;
 public class Cour {
    private SimpleStringProperty codeCour = new SimpleStringProperty();
    private SimpleStringProperty nomCour = new SimpleStringProperty();
-   private Date horaire;
    private SimpleStringProperty ensaignant = new SimpleStringProperty();
    private SimpleStringProperty salle = new SimpleStringProperty();
    private SimpleStringProperty semestre = new SimpleStringProperty();
 
-   public Cour(String codeCour,String nomCour,Date horaire,String respo,String salle,String semestre){
+   public Cour(String codeCour,String nomCour,String respo,String salle,String semestre){
 
     this.codeCour.set(codeCour);
     this.nomCour.set(nomCour);
     this.ensaignant.set(respo);
-    this.horaire = horaire;
     this.salle.set(salle);
     this.semestre.set(semestre);
     
@@ -28,9 +26,7 @@ public class Cour {
    public String getEnsaignant() {
        return ensaignant.get();
    }
-   public Date getHoraire() {
-       return horaire;
-   }
+   
    public String getNomCour() {
        return nomCour.get();
    }
@@ -49,9 +45,7 @@ public class Cour {
    public void setEnsaignant(String ensaignant) {
        this.ensaignant.set(ensaignant);
    }
-   public void setHoraire(Date horaire) {
-       this.horaire = horaire;
-   }
+   
    public void setNomCour(String nomCour) {
        this.nomCour.set(nomCour);
    }

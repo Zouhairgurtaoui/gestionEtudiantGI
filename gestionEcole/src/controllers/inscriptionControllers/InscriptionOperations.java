@@ -40,17 +40,10 @@ public class InscriptionOperations implements Initializable{
     @FXML
     private TableColumn<Inscription, String> dateInscriptionCol;
 
-    @FXML
-    private ImageView exit;
-
-    @FXML
-    private ImageView fullScreen;
 
     @FXML
     private ImageView homeImage;
 
-    @FXML
-    private ImageView hide;
 
     @FXML
     private Button home;
@@ -101,31 +94,6 @@ public class InscriptionOperations implements Initializable{
             home(event);
         });
         
-        exit.setOnMouseClicked(e -> {
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.close();
-        });
-
-        
-        fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            
-            if(!isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=true;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=false;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.setY(Stage.getWindows().size() + 100);
-        });
-
        
     }
 
@@ -158,7 +126,7 @@ public class InscriptionOperations implements Initializable{
         try {
             connection = DbConnection.getConnectDB();
             dataList.clear();
-            query="SELECT ET.cne,INS.idinscription,INS.dateInscription,ET.nomEtudiant,ET.prenomEtudiant FROM inscription As INS,etudiant AS ET WHERE INS.cne = ET.cne AND INS.semestreInscription=?";
+            query="SELECT DISTINCT ET.cne,INS.idinscription,INS.dateInscription,ET.nomEtudiant,ET.prenomEtudiant FROM inscription As INS,etudiant AS ET WHERE INS.cne = ET.cne AND INS.semestreInscription=? GROUP BY INS.cne";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, semestre);
             resultSet = preparedStatement.executeQuery();
@@ -246,7 +214,11 @@ public class InscriptionOperations implements Initializable{
            System.out.println("rows Affected "+res);
            displayAll();
         }catch(NullPointerException nullPointerException){
-
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setHeaderText("ERROR");
+            alert.setContentText("You need to Select an etudiant to disinscrir");
+            alert.show();
+            System.out.println(nullPointerException);
         }
          catch (Exception e) {
             // TODO: handle exception
@@ -272,8 +244,6 @@ public class InscriptionOperations implements Initializable{
             CourInscription.inscription=inscription;
             root = loader.load();
             
-            
-           
             root.setOnMousePressed(e ->{
                 x = e.getSceneX();
                 y = e.getSceneY();
@@ -283,6 +253,7 @@ public class InscriptionOperations implements Initializable{
                 stage.setY(e.getScreenY() - y);
             });
             scene = new Scene(root);
+            scene.getStylesheets().add("controllers/tableview.css");
             stage.setScene(scene);
             stage.show();
         }catch(NullPointerException nullPointerException){

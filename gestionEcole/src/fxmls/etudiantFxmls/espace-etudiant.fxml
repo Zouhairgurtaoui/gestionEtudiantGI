@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,108 +13,88 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.EtudiantOperations">
+<AnchorPane prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.etudiantControllers.EtudiantOperations">
    <children>
-      <AnchorPane fx:id="menuPane" prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #00264C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="238.0" layoutY="164.0" prefHeight="200.0" prefWidth="44.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0" />
-      <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="204.0" style="-fx-background-color: #fff; -fx-background-size: 0.3; -fx-border-color: #000;" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
+      <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="170.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutX="30.0" layoutY="108.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-color: 0.3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="38.0" prefWidth="200.0" spacing="15.0">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="Home">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <ImageView fx:id="home" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/home-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="163.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="Home" onAction="#home">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <graphic>
-                              <ImageView fx:id="home" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../java/images/house.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/minimal-48-512.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchField" prefHeight="25.0" prefWidth="131.0" promptText="Search" />
                      </children>
-                     <padding>
-                        <Insets left="10.0" top="10.0" />
-                     </padding>
                   </HBox>
-                  <HBox prefHeight="38.0" prefWidth="200.0" spacing="15.0">
-                     <children>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#ajouter" prefHeight="62.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="  Ajouter">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="ajouter" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../java/images/plus.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="38.0" prefWidth="200.0" spacing="15.0">
-                     <children>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#supprimerEtudiant" prefHeight="52.0" prefWidth="179.0" style="-fx-background-color: #fff;" text="  Supprimer">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="supprimer" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../java/images/user-minus.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="38.0" prefWidth="200.0" spacing="15.0">
-                     <children>
-                        <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#modifierInfoEtudiant" prefHeight="62.0" prefWidth="180.0" style="-fx-background-color: #fff;" text="  Modifier">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../java/images/pen-to-square.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ajouter" prefHeight="32.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="  Ajouter">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="ajouter" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/add-icon-transparent-23-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#supprimerEtudiant" prefHeight="38.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="  Supprimer">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="supprimer" fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/delete-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#modifierInfoEtudiant" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #fff;" text="  Modifier">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/edit-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <HBox layoutX="222.0" layoutY="81.0" prefHeight="398.0" prefWidth="566.0" style="-fx-border-color: #000;">
+      <HBox layoutX="176.0" layoutY="23.0" prefHeight="387.0" prefWidth="623.0">
          <children>
-            <TableView fx:id="tableEtudiant" prefHeight="398.0" prefWidth="566.0">
+            <TableView fx:id="tableEtudiant" prefHeight="387.0" prefWidth="622.0">
               <columns>
-                <TableColumn fx:id="cne" prefWidth="75.0" text="Cne" />
-                <TableColumn fx:id="nom" prefWidth="75.0" text="Nom" />
-                  <TableColumn fx:id="prenom" prefWidth="75.0" text="Prenom" />
-                  <TableColumn fx:id="naissance" prefWidth="75.0" text="Date de naissance" />
-                  <TableColumn fx:id="adresse" prefWidth="75.0" text="Adresse" />
-                  <TableColumn fx:id="tele" prefWidth="75.0" text="Tele" />
-                  <TableColumn fx:id="semestre" prefWidth="75.0" text="Semestre" />
+                <TableColumn fx:id="cne" prefWidth="101.99998474121094" text="Cne" />
+                <TableColumn fx:id="nom" prefWidth="98.66665649414062" text="Nom" />
+                  <TableColumn fx:id="prenom" prefWidth="97.3333740234375" text="Prenom" />
+                  <TableColumn fx:id="naissance" prefWidth="120.66665649414062" text="Date de naissance" />
+                  <TableColumn fx:id="adresse" prefWidth="96.0" text="Adresse" />
+                  <TableColumn fx:id="tele" prefWidth="102.0" text="Tele" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -121,7 +102,7 @@
             </TableView>
          </children>
       </HBox>
-      <Label fx:id="attention" layoutX="222.0" layoutY="56.0" textFill="DARKGRAY">
+      <Label fx:id="attention" layoutX="368.0" layoutY="4.0" prefHeight="19.0" prefWidth="219.0" textFill="DARKGRAY">
          <font>
             <Font size="13.0" />
          </font>

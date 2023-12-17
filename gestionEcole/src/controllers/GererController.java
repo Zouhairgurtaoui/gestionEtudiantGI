@@ -7,18 +7,18 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class GererController implements Initializable{
+public class GererController {
 
     @FXML
     private Button coursEtudiant;
@@ -31,20 +31,14 @@ public class GererController implements Initializable{
 
     @FXML
     private Text welcomeLabel;
-    @FXML
-    private ImageView fullScreen;
-
-    @FXML
-    private ImageView hide;
+   
 
     private FXMLLoader loader;
     private Stage stage;
     private Parent root;
     private Scene scene;
     double x,y;
-    @FXML
-    private ImageView exit;
-    private boolean isFullScreen;
+    
     @FXML
     void gererCours(ActionEvent event) {
         try {
@@ -107,7 +101,7 @@ public class GererController implements Initializable{
                     stage.show();
                     } catch (IOException e) {
                         
-                        
+                        e.printStackTrace();
                         System.out.println("gere etudiant "+e);
                     }
                     
@@ -152,32 +146,6 @@ public class GererController implements Initializable{
 
     public void setWelcomeText(String user){
         welcomeLabel.setText("Bonjour Mensieur "+user);
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        exit.setOnMouseClicked(e ->{
-            System.exit(0);
-        });
-         fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            
-            if(isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=false;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=true;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.hide();
-        });
-       
     }
 
 }

@@ -55,8 +55,7 @@ public class CourOperations implements Initializable{
     @FXML
     private ImageView search;
 
-    @FXML
-    private ImageView exit;
+    
     @FXML
     private ImageView modiferImage;
     @FXML
@@ -66,8 +65,7 @@ public class CourOperations implements Initializable{
     @FXML
     private ImageView addImage;
 
-    @FXML
-    private  TableColumn<Cour, String> horaireCol;
+   
 
     @FXML
     private AnchorPane navigationPane;
@@ -81,11 +79,7 @@ public class CourOperations implements Initializable{
     @FXML
     private TableColumn<Cour, String> semestreCol;
 
-    @FXML
-    private ImageView fullScreen;
-
-    @FXML
-    private ImageView hide;
+    
 
     @FXML
     private TextField searchField;
@@ -95,7 +89,7 @@ public class CourOperations implements Initializable{
     Parent root;
     FXMLLoader loader;
     Scene scene;
-    private boolean isFullScreen;
+   
     String query;
     Connection connection;
     PreparedStatement preparedStatement;
@@ -110,7 +104,6 @@ public class CourOperations implements Initializable{
         nomCourCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("nomCour"));
         ensaignatCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("ensaignant"));
         salleCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("salle"));
-        horaireCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("horaire"));
         semestreCol.setCellValueFactory(new PropertyValueFactory<Cour,String>("semestre"));
         loadData();
 
@@ -121,29 +114,7 @@ public class CourOperations implements Initializable{
             home(event);
         });
         
-        exit.setOnMouseClicked(e -> {
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.close();
-        });
-
         
-        fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            if(!isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=true;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=false;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.setY(Stage.getWindows().size() + 100);
-        });
 
         FilteredList<Cour> filterData = new FilteredList<>(courList, b -> true);
         searchField.textProperty().addListener(new ChangeListener<String>(){
@@ -189,8 +160,7 @@ public class CourOperations implements Initializable{
             resultSet = preparedStatement.executeQuery();
             
             while (resultSet.next()){
-                courList.add(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour") ,
-                resultSet.getDate("horaire"), resultSet.getString("ensaignantRespo"), resultSet.getString("salle"),resultSet.getString("semestre")));
+                courList.add(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour") , resultSet.getString("ensaignantRespo"), resultSet.getString("salle"),resultSet.getString("semestre")));
             }
             
             
@@ -267,7 +237,7 @@ public class CourOperations implements Initializable{
 
             AjouterCourController controller = loader.getController();
             controller.setController(this);
-            controller.setFieldText(cour.getCodeCour(), cour.getNomCour(), cour.getEnsaignant(), cour.getHoraire().toLocalDate(), cour.getSalle());
+            controller.setFieldText(cour.getCodeCour(), cour.getNomCour(), cour.getEnsaignant(), cour.getSalle());
             controller.setUpdated(true);
             controller.setConfirmationBtn("Modifier");
             controller.setCodeCourEditability(false);

@@ -1,8 +1,13 @@
 package controllers.etudiantControllers;
 
 import java.sql.*;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +18,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 import classes.Etudiant;
 import connection.DbConnection;
@@ -41,8 +48,6 @@ public class EtudiantOperations implements Initializable {
     @FXML
     private TableColumn<Etudiant, String> prenom;
 
-    @FXML
-    private TableColumn<Etudiant, String> semestre;
 
     @FXML
     private TableView<Etudiant> tableEtudiant;
@@ -66,9 +71,13 @@ public class EtudiantOperations implements Initializable {
     private ImageView modifier;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
     private Label attention;
 
     Connection connection;
+    ObservableList<Etudiant> list = FXCollections.observableArrayList();
 
 
     
@@ -83,22 +92,23 @@ public class EtudiantOperations implements Initializable {
     }
 
 
-    public ObservableList<Etudiant> initializeFromDB() throws SQLException {
-        ObservableList<Etudiant> list = FXCollections.observableArrayList();
+    public void initializeFromDB() throws SQLException {
+        
         connection = DbConnection.getConnectDB();
         String query = "select * from etudiant";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()){
-            list.add(new Etudiant(resultSet.getString("cne"),resultSet.getString("nomEtudiant"),resultSet.getString("prenomEtudiant"),resultSet.getString("dateNaissance"),resultSet.getString("addresse"),resultSet.getString("numTele"),resultSet.getString("semestre")));
+            list.add(new Etudiant(resultSet.getString("cne"),resultSet.getString("nomEtudiant"),resultSet.getString("prenomEtudiant"),resultSet.getString("dateNaissance"),resultSet.getString("addresse"),resultSet.getString("numTele")));
         }
         connection.close();
-        return list;
+       
 
     }
 
     public void load() throws SQLException {
-        tableEtudiant.setItems(initializeFromDB());
+        initializeFromDB();
+        tableEtudiant.setItems(list);
     }
 
     @Override
@@ -109,13 +119,40 @@ public class EtudiantOperations implements Initializable {
         naissance.setCellValueFactory(new PropertyValueFactory<Etudiant,String>("dateNaissance"));
         adresse.setCellValueFactory(new PropertyValueFactory<Etudiant,String>("adresse"));
         tele.setCellValueFactory(new PropertyValueFactory<Etudiant,String>("tele"));
-        semestre.setCellValueFactory(new PropertyValueFactory<Etudiant,String>("semestre"));
 
         try {
             load();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        FilteredList<Etudiant> filteredList = new FilteredList<>(list, b->true);
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                filteredList.setPredicate(new Predicate<Etudiant>() {
+
+                    @Override
+                    public boolean test(Etudiant etudiant) {
+                        if(newValue == null|| newValue.isEmpty()){
+                            return true;
+                        }
+                        String lowerCase = newValue.toLowerCase();
+                        if(etudiant.getCne().toLowerCase().indexOf(lowerCase) != -1){
+                            return true;
+                        }else if(etudiant.getNom().toLowerCase().indexOf(lowerCase) != -1){
+                            return true;
+                        }else return false;
+                    }
+                    
+                });
+            }
+            
+        });
+        SortedList<Etudiant> sortedList = new SortedList<Etudiant>(filteredList);
+        sortedList.comparatorProperty().bind(tableEtudiant.comparatorProperty());
+        tableEtudiant.setItems(sortedList);
     }
 
     public void supprimerEtudiant(ActionEvent event) throws SQLException {
@@ -139,7 +176,7 @@ public class EtudiantOperations implements Initializable {
             ControllerModifierEtudiant controllerModifierEtudiant = fxmlLoader.getController();
             controllerModifierEtudiant.setTextFields(etudiant.getCne());
         }catch(NullPointerException nullPointerException){
-            attention.setVisible(true);
+            
             attention.setText("Select an Etudiant");
         }   
         stage.setScene(scene);

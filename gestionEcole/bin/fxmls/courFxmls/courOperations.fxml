@@ -11,27 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.courControllers.CourOperations">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.courControllers.CourOperations">
    <children>
-      <AnchorPane prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #00264C;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="762.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/exit-removebg-preview.png" />
-               </image></ImageView>
-            <ImageView fx:id="fullScreen" fitHeight="32.0" fitWidth="32.0" layoutX="722.0" layoutY="7.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../icons/full-screen-icon-28.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="hide" fitHeight="24.0" fitWidth="18.0" layoutX="689.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/minus-xxl.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="455.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="45.666666666666686">
+      <AnchorPane prefHeight="455.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="TOP_CENTER" layoutY="56.0" prefHeight="303.0" prefWidth="44.0" spacing="30.0" AnchorPane.topAnchor="20.0">
                <children>
@@ -60,7 +42,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="navigationPane" prefHeight="455.0" prefWidth="160.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="45.666666666666686">
+      <AnchorPane fx:id="navigationPane" prefHeight="455.0" prefWidth="160.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutX="50.0" layoutY="33.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
@@ -89,16 +71,15 @@
             </VBox>
          </children>
       </AnchorPane>
-      <HBox layoutX="222.0" layoutY="81.0" prefHeight="398.0" prefWidth="566.0">
+      <HBox layoutX="220.0" layoutY="28.0" prefHeight="398.0" prefWidth="566.0">
          <children>
             <TableView fx:id="courTable" prefHeight="398.0" prefWidth="567.0">
                <columns>
-                  <TableColumn fx:id="codeCourCol" prefWidth="90.66667175292969" text="Code Cour" />
-                  <TableColumn fx:id="nomCourCol" prefWidth="105.33331298828125" text="Nom Cour" />
-                  <TableColumn fx:id="ensaignatCol" prefWidth="107.33340454101562" text="Ensaignant" />
-                  <TableColumn fx:id="horaireCol" prefWidth="98.0" text="Horaire" />
-                  <TableColumn fx:id="salleCol" prefWidth="82.0" text="Salle" />
-                  <TableColumn fx:id="semestreCol" prefWidth="88.0" text="Semestre" />
+                  <TableColumn fx:id="codeCourCol" prefWidth="119.99998474121094" text="Code Cour" />
+                  <TableColumn fx:id="nomCourCol" prefWidth="121.33334350585938" text="Nom Cour" />
+                  <TableColumn fx:id="ensaignatCol" prefWidth="119.33340454101562" text="Ensaignant" />
+                  <TableColumn fx:id="salleCol" prefWidth="96.66668701171875" text="Salle" />
+                  <TableColumn fx:id="semestreCol" prefWidth="108.0" text="Semestre" />
                </columns>
             </TableView>
          </children>

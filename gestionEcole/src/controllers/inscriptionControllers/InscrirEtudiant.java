@@ -48,14 +48,6 @@ public class InscrirEtudiant implements Initializable{
     @FXML
     private TableColumn<Cour, String> nomCourCol;
 
-    @FXML
-    private ImageView exit;
-
-    @FXML
-    private ImageView fullScreen;
-
-    @FXML
-    private ImageView hide;
 
     @FXML
     private ImageView homeImage;
@@ -76,7 +68,6 @@ public class InscrirEtudiant implements Initializable{
     Statement statement;
     String query;
     ResultSet resultSet;
-    boolean isFullScreen;
     ObservableList<Cour> dataList = FXCollections.observableArrayList();
 
     @Override
@@ -92,30 +83,7 @@ public class InscrirEtudiant implements Initializable{
             home(event);
         });
         
-        exit.setOnMouseClicked(e -> {
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.close();
-        });
-
         
-        fullScreen.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            
-            
-            if(!isFullScreen){
-                stage.setFullScreen(true);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/exit-fullscreen.png")));
-                isFullScreen=true;
-            }else{
-                stage.setFullScreen(false);
-                fullScreen.setImage(new Image(getClass().getResourceAsStream("/icons/full-screen-icon-28.png")));
-                isFullScreen=false;
-            }
-        });
-        hide.setOnMouseClicked(e ->{
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            stage.setY(Stage.getWindows().size() + 100);
-        });
 
     }
 
@@ -154,7 +122,7 @@ public class InscrirEtudiant implements Initializable{
             preparedStatement.setString(1, semestre);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                dataList.addAll(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour"),null,null,null,null));
+                dataList.addAll(new Cour(resultSet.getString("codeCour"),resultSet.getString("nomCour"),null,null,null));
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -201,6 +169,7 @@ public class InscrirEtudiant implements Initializable{
             loader.setLocation(getClass().getResource("/fxmls/inscriptionFxmls/inscriptionOperations.fxml"));
             root = loader.load();
             scene = new Scene(root);
+            scene.getStylesheets().add("controllers/tableview.css");
             stage.setScene(scene);
             stage.show();
 
